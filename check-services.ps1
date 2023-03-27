@@ -1,15 +1,10 @@
-﻿$services = @("Base Filtering Engine", "DHCP Client", "Dnscache", "IKEEXT", "iphlpsvc", "nsi", "mpssvc", "RemoteRegistry")
+$services = @("BFE", "Dhcp", "Dnscache", "IKEEXT", "iphlpsvc", "nsi", "mpssvc", "RemoteRegistry")
 
-Foreach ($i in $services) {
-write $i
+forEach ($i in $services) {
+write "Starting service $i"
+    Set-Service -Name $i  -Status Running
 }
 
-Set-Service -Name $services -Status "Running"
-
-Get-Service $services
-
-Set-Service -Name $services -Status "Automatic"
-
-Foreach ($i in $services) {
-Set-Service -Name $i -Status "Running"
+forEach ($i in $services) {
+Get-Service -Name $i
 }
