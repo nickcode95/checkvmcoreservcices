@@ -1,0 +1,10 @@
+$manualServices = @("Netlogon", "Netman", "TermService")
+
+forEach($i in $manualServices) {
+set-Service -Name $i -Status Manual
+}
+
+forEach($i in $manualServices) {
+Get-Service -Name $i
+
+}
